@@ -17,5 +17,9 @@
   - Price section doesn't have a title, so goes straight into numbers without context
   - A11y considerations on +/- controls
   - Some minor spacing here and there
+  - Skip nav
+  - Sections
+  - Larger displays
+  - Focus states
 - Add basket functionality
 - Load data dynamically from backend
