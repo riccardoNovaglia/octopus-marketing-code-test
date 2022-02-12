@@ -18,8 +18,14 @@
   - A11y considerations on +/- controls
   - Some minor spacing here and there
   - Skip nav
-  - Sections
+  - ~~Sections~~
   - Larger displays
   - Focus states
 - Add basket functionality
+  - Use cookies to persist basket
+  - Create a basket page with list of items in basket
+  - Limit quantity to sensible levels
+  - Limit basket amount to sensible levels
 - Load data dynamically from backend
+  - What's before this page?
+  - Create landing page with list of products? On click, open lightbulb?
