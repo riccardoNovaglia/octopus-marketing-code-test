@@ -1,4 +1,17 @@
 body {
   font-family: "Gotham", helvetica, arial, sans-serif;
   margin: 0;
+
+  --dark-blue-background: #050f2a;
+  --lighter-blue-background: #01193b;
+  //--lighter-blue-background: #0055cd; // Lighter, just to tell colors apart locally
+
+  --dark-blue-text: #36598d;
+
+  color: #ffffff;
+  background-color: var(--lighter-blue-background);
+}
+
+p {
+  margin: 0;
 }

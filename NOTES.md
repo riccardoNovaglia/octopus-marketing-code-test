@@ -10,5 +10,12 @@
 ## TODOs
 
 - Style client to match design
+  - A11y considerations on contrast
+  - A11y considerations on images/logos
+  - Font doesn't quite seem to match - especially noticeable in numbers
+  - Review landmarks/navigation
+  - Price section doesn't have a title, so goes straight into numbers without context
+  - A11y considerations on +/- controls
+  - Some minor spacing here and there
 - Add basket functionality
 - Load data dynamically from backend
