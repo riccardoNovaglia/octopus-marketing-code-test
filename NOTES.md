@@ -1,4 +1,22 @@
-# Notes
+# README!
+
+This was fun! I have left below a long list of TODOs, I wouldn't consider this app "done". Time as ran away a little, and this is as far as I got.  
+I don't mind continuing if needed, otherwise hopefully this is enough to show what I can do.
+
+To run the app:
+- Start the server following the instructions provided in the README
+  - Don't forget to run migrations and adding data to the DB
+  - This should start the server on port 8000
+- Start the client
+  - `cd octopus/client && npm install && npm start`
+  - As mentioned below, the app was built using node `v16.14.0`. Results might vary with other node versions (at least major versions!)
+  - As mentioned below I ended up using `npm` rather than `yarn` - also because that's what I'm more used to
+
+The app will load on port 3000 (http://localhost:3000). The app is set up to proxy requests to the server (see `proxy` in `client/package.json`). This is because "in the real world" I'd imagine the UI and server living under the same domain and avoid CORS complications.
+
+For reference, I've taken a full-page screenshot of the latest version of the app, and saved it in `DesignMatch.png`.
+
+## Notes
 
 (Running comments as I complete the test)
 
@@ -10,11 +28,12 @@
 
 ## TODOs
 
-- Style client to match design
+- ~~Style client to match design~~
   - A11y considerations on contrast
-    - Quantity + power
-  - A11y considerations on images/logos
-    - Should the Octopus Logo send the user somewhere?
+    - Quantity + power is not contrasty enough
+    - Some button labels
+    - The link on the basket page (and styling the button there too) 
+  - Should the Octopus Logo send the user somewhere?
   - Font doesn't quite seem to match - especially noticeable in numbers
   - Review landmarks/navigation
   - ~~Price section doesn't have a title, so goes straight into numbers without context~~

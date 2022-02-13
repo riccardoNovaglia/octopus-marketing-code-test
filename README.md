@@ -1,5 +1,11 @@
 # Octopus Front End Test
 
+--- 
+
+## !! Please find instructions on how to run and more in NOTES.md !!
+
+---
+
 This example project was pinched from a
 [graphene-django example app](https://github.com/graphql-python/graphene-django/tree/master/server/app).
 and [Create React App](https://create-react-app.dev/docs/getting-started/).  
