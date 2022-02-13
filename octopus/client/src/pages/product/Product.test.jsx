@@ -7,6 +7,7 @@ import { MockedProvider } from "@apollo/client/testing";
 import { Product } from "./Product";
 import { GraphQLError } from "graphql";
 import { getMocks, productSample, getRequest } from "./product.fixture";
+import userEvent from "@testing-library/user-event";
 
 const product = productSample();
 
@@ -39,6 +40,21 @@ it("fetches the product by id and renders it", async () => {
   expect(screen.getByText(product.brand)).toBeInTheDocument();
   expect(screen.getByText("98")).toBeInTheDocument();
   expect(screen.getByText(".76")).toBeInTheDocument();
+});
+
+it("adds the product id along with the selected quantity to the basket", async () => {
+  const addToBasket = jest.fn();
+  render(
+    <MockedProvider mocks={getMocks(product)} addTypename={false}>
+      <Product addItemsToBasket={addToBasket} />
+    </MockedProvider>
+  );
+  await waitForElementToBeRemoved(() => screen.queryByText(/loading/i));
+  userEvent.click(screen.getByRole("button", { name: "Add to cart" }));
+  expect(addToBasket).toHaveBeenCalledWith({
+    productId: product.id,
+    quantity: 1,
+  });
 });
 
 it.each([

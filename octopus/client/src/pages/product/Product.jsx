@@ -6,6 +6,7 @@ import { Error } from "./components/Error";
 import { AddToBasket } from "./components/addToBasket/AddToBasket";
 import { GET_PRODUCT_QUERY } from "./productQueries";
 import styles from "./Product.module.scss";
+import { PageTitle } from "../../components/PageTitle";
 
 export function Product({ addItemsToBasket }) {
   const { loading, error, data } = useQuery(GET_PRODUCT_QUERY, {
@@ -27,7 +28,11 @@ export function Product({ addItemsToBasket }) {
         quantity={product.quantity}
       />
       <Price price={product.price}>
-        <AddToBasket addItemsToBasket={addItemsToBasket} />
+        <AddToBasket
+          addItemsToBasket={(quantity) =>
+            addItemsToBasket({ productId: product.id, quantity })
+          }
+        />
       </Price>
       <Description description={product.description} />
       <Specs {...specs} />
