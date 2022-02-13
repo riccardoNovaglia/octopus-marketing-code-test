@@ -5,7 +5,6 @@
     var(--dark-blue-background) 90%,
     var(--lighter-blue-background) 90%
   );
-  min-height: 30rem;
 
   .heroImage {
     width: 75vw;
@@ -14,7 +13,9 @@
 }
 
 .productName {
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  font-size: 2rem;
 }
 
 .subtitle {

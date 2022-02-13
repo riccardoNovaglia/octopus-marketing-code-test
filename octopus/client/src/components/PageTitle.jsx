@@ -1,4 +1,4 @@
-export function PageTitle({ title, classNames }) {
+export function PageTitle({ title, className }) {
   document.title = title;
-  return <h1 className={classNames}>{title}</h1>;
+  return <h1 className={className}>{title}</h1>;
 }
