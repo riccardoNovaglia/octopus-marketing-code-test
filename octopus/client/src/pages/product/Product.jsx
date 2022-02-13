@@ -1,47 +1,37 @@
 import { VisuallyHidden } from "@reach/visually-hidden";
 import { useQuery } from "@apollo/client";
 
+import { Loading } from "./components/Loading";
+import { Error } from "./components/Error";
+import { AddToBasket } from "./components/addToBasket/AddToBasket";
 import { GET_PRODUCT_QUERY } from "./productQueries";
-import { AddToBasket } from "./components/AddToBasket";
 import styles from "./Product.module.scss";
 
 export function Product({ addItemsToBasket }) {
   const { loading, error, data } = useQuery(GET_PRODUCT_QUERY, {
     variables: { productId: "1" },
   });
-  if (loading) return <p>Loading...</p>;
-  if (error)
-    return (
-      <p>An error occurred getting this product's data, please try again</p>
-    );
+  if (loading) return <Loading />;
+  if (error) return <Error />;
 
-  const {
-    name,
-    power,
-    description,
-    price,
-    quantity,
-    brand,
-    weight,
-    height,
-    width,
-    length,
-    modelCode,
-    colour,
-    imgUrl,
-  } = data.product;
+  const product = data.product;
+  const { brand, weight, height, width, length, modelCode, colour } = product;
   const specs = { brand, weight, height, width, length, modelCode, colour };
 
   return (
-    <main className={styles.main}>
-      <HeroImage imgUrl={imgUrl} />
-      <Title name={name} power={power} quantity={quantity} />
-      <Price price={price}>
+    <>
+      <HeroImage imgUrl={product.imgUrl} />
+      <Title
+        name={product.name}
+        power={product.power}
+        quantity={product.quantity}
+      />
+      <Price price={product.price}>
         <AddToBasket addItemsToBasket={addItemsToBasket} />
       </Price>
-      <Description description={description} />
+      <Description description={product.description} />
       <Specs {...specs} />
-    </main>
+    </>
   );
 }
 

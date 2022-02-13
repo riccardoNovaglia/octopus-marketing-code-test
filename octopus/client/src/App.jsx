@@ -4,6 +4,8 @@ import { Footer } from "./components/footer/Footer";
 import { Banner } from "./components/banner/Banner";
 import { Product } from "./pages/product/Product";
 
+import styles from "./App.module.scss";
+
 const App = () => {
   const [itemsInBasket, setItemsInBasket] = useState(0);
 
@@ -14,7 +16,9 @@ const App = () => {
   return (
     <>
       <Banner itemsInBasket={itemsInBasket} />
-      <Product addItemsToBasket={addItemsToBasket} />
+      <main className={styles.main}>
+        <Product addItemsToBasket={addItemsToBasket} />
+      </main>
       <Footer />
     </>
   );
