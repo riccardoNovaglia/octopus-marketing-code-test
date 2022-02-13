@@ -4,6 +4,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import "./index.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { CookiesProvider } from "react-cookie";
 
 const client = new ApolloClient({
   uri: "/graphql",
@@ -12,7 +13,9 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>
   </ApolloProvider>,
   document.getElementById("root")
 );

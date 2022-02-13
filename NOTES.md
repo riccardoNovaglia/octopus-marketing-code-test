@@ -23,7 +23,7 @@
   - Larger displays
   - Focus states
 - ~~Add basket functionality~~
-  - Use cookies to persist basket
+  - ~~Use cookies to persist basket~~
   - Create a basket page with list of items in basket
   - ~~Limit quantity to sensible levels~~
   - Limit basket amount to sensible levels

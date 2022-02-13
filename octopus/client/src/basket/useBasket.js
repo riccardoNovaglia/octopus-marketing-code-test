@@ -1,27 +1,38 @@
-import { useState } from "react";
+import { useCookies } from "react-cookie";
+
+const cookieName = "basket";
 
 export function useBasket() {
-  const [basket, setBasket] = useState({});
+  const [cookies, setCookie] = useCookies([cookieName]);
 
   function addToBasket({ productId, quantity }) {
-    const currentAmount = basket[productId]?.quantity ?? 0;
+    if (cookies.basket !== undefined) {
+      const currentAmount = cookies.basket[productId]?.quantity ?? 0;
 
-    setBasket({
-      ...basket,
-      [productId]: { quantity: currentAmount + quantity },
-    });
+      setCookie(cookieName, {
+        ...cookies.basket,
+        [productId]: { quantity: currentAmount + quantity },
+      });
+    } else {
+      setCookie(cookieName, {
+        ...cookies.basket,
+        [productId]: { quantity: 0 + quantity },
+      });
+    }
   }
 
   function totalItemsInTheBasket() {
-    const products = Object.keys(basket);
+    if (cookies.basket === undefined) return 0;
+
+    const products = Object.keys(cookies.basket);
     return products
-      .map((productId) => basket[productId].quantity)
+      .map((productId) => cookies.basket[productId].quantity)
       .reduce((acc, quantity) => acc + quantity, 0);
   }
 
   return {
     addToBasket,
     totalItemsInTheBasket,
-    basket,
+    basket: cookies.basket,
   };
 }

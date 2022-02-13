@@ -3,7 +3,6 @@ import { useBasket } from "./useBasket";
 
 it("allows adding items to the basket", () => {
   const { result } = renderHook(() => useBasket());
-  expect(result.current.basket).toEqual({});
   act(() => {
     result.current.addToBasket({ productId: 1, quantity: 3 });
   });
