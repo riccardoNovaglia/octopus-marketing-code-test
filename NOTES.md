@@ -21,7 +21,7 @@
   - ~~Sections~~
   - Larger displays
   - Focus states
-- Add basket functionality
+- ~~Add basket functionality~~
   - Use cookies to persist basket
   - Create a basket page with list of items in basket
   - ~~Limit quantity to sensible levels~~
@@ -29,3 +29,4 @@
 - Load data dynamically from backend
   - What's before this page?
   - Create landing page with list of products? On click, open lightbulb?
+- Typescript
