@@ -1,28 +1,57 @@
 import { VisuallyHidden } from "@reach/visually-hidden";
+import { useQuery } from "@apollo/client";
 
+import { GET_PRODUCT_QUERY } from "./productQueries";
 import { AddToBasket } from "./components/AddToBasket";
 import styles from "./Product.module.scss";
 
 export function Product({ addItemsToBasket }) {
+  const { loading, error, data } = useQuery(GET_PRODUCT_QUERY, {
+    variables: { productId: "1" },
+  });
+  if (loading) return <p>Loading...</p>;
+  if (error)
+    return (
+      <p>An error occurred getting this product's data, please try again</p>
+    );
+
+  const {
+    name,
+    power,
+    description,
+    price,
+    quantity,
+    brand,
+    weight,
+    height,
+    width,
+    length,
+    modelCode,
+    colour,
+    imgUrl,
+  } = data.product;
+  const specs = { brand, weight, height, width, length, modelCode, colour };
+
   return (
     <main className={styles.main}>
-      <HeroImage />
-      <Title />
-      <Price>
+      <HeroImage imgUrl={imgUrl} />
+      <Title name={name} power={power} quantity={quantity} />
+      <Price price={price}>
         <AddToBasket addItemsToBasket={addItemsToBasket} />
       </Price>
-      <Description />
-      <Specs />
+      <Description description={description} />
+      <Specs {...specs} />
     </main>
   );
 }
 
-function HeroImage() {
+function HeroImage({ imgUrl }) {
   return (
     <section className={styles.heroImageWrapper} aria-hidden>
+      {/* TODO: Consider fixing height to avoid page jumping when img loads */}
       <img
         className={styles.heroImage}
-        src="https://i.ibb.co/2nzwxnQ/bulb.png"
+        src={imgUrl}
         alt="A picture of the product"
         aria-hidden
       />
@@ -30,57 +59,62 @@ function HeroImage() {
   );
 }
 
-function Title() {
+function Title({ name, power, quantity }) {
   return (
     <section>
-      <h1 className={styles.productName}>Energy saving light bulb</h1>
-      <p className={styles.subtitle}>25W // Packet of 4</p>
-    </section>
-  );
-}
-
-function Description() {
-  return (
-    <section>
-      <h2>Description</h2>
-      <p>
-        Available in 7 watts, 9 watts, 11 watts Spiral Light bulb in B22, bulb
-        switches on instantly, no wait around warm start and flicker free
-        features make for a great all purpose bulb
+      <h1 className={styles.productName}>{name}</h1>
+      <p className={styles.subtitle}>
+        <span>{power}</span>
+        {/* TODO: add // with CSS rather than text so that it doesn't get read out? */}
+        {" // "}
+        <span>Packet of {quantity}</span>
       </p>
     </section>
   );
 }
 
-function Price({ children }) {
+function Description({ description }) {
+  return (
+    <section>
+      <h2>Description</h2>
+      <p>{description}</p>
+    </section>
+  );
+}
+
+function Price({ price, children }) {
+  const [pounds, pence] = `${price / 100}`.split(".");
   return (
     <section className={styles.priceSection}>
       <VisuallyHidden>
         <h2>Price and add to cart</h2>
       </VisuallyHidden>
       <p className={styles.price}>
-        12<span className={styles.pence}>.99</span>
+        {pounds}
+        <span className={styles.pence}>.{pence}</span>
       </p>
       {children}
     </section>
   );
 }
 
-function Specs() {
+function Specs({ brand, weight, height, width, length, modelCode, colour }) {
   return (
     <section className={styles.specsSection}>
       <h2>Specifications</h2>
       <dl className={styles.specs}>
         <dt>Brand</dt>
-        <dd>Philips</dd>
+        <dd>{brand}</dd>
         <dt>Item weight</dt>
-        <dd>77</dd>
+        <dd>{weight}</dd>
         <dt>Dimensions</dt>
-        <dd>12.6x6.2x6.2</dd>
+        <dd>
+          {height}x{width}x{length}
+        </dd>
         <dt>Item model number</dt>
-        <dd>E27 ES</dd>
+        <dd>{modelCode}</dd>
         <dt>Colour</dt>
-        <dd>Cool daylight</dd>
+        <dd>{colour}</dd>
       </dl>
     </section>
   );
