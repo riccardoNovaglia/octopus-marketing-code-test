@@ -11,10 +11,11 @@
     var(--dark-blue-background) 90%,
     var(--lighter-blue-background) 90%
   );
+  min-height: 30rem;
 
   .heroImage {
     width: 75vw;
-    max-width: 600px;
+    max-width: 35rem;
   }
 }
 

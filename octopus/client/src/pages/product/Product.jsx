@@ -48,7 +48,6 @@ export function Product({ addItemsToBasket }) {
 function HeroImage({ imgUrl }) {
   return (
     <section className={styles.heroImageWrapper} aria-hidden>
-      {/* TODO: Consider fixing height to avoid page jumping when img loads */}
       <img
         className={styles.heroImage}
         src={imgUrl}
