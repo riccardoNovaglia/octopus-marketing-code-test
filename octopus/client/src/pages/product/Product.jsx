@@ -7,10 +7,12 @@ import { AddToBasket } from "./components/addToBasket/AddToBasket";
 import { GET_PRODUCT_QUERY } from "./productQueries";
 import styles from "./Product.module.scss";
 import { PageTitle } from "../../components/PageTitle";
+import { useParams } from "react-router-dom";
 
 export function Product({ addItemsToBasket }) {
+  const params = useParams();
   const { loading, error, data } = useQuery(GET_PRODUCT_QUERY, {
-    variables: { productId: "1" },
+    variables: { productId: params.productId ?? "1" },
   });
   if (loading) return <Loading />;
   if (error) return <Error />;

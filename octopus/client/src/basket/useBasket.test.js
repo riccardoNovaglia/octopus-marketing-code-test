@@ -40,3 +40,15 @@ it("can add the same product multiple times", () => {
   });
   expect(result.current.totalItemsInTheBasket()).toEqual(10);
 });
+
+it("can clear all items from the basket", () => {
+  const { result } = renderHook(() => useBasket());
+  act(() => {
+    result.current.addToBasket({ productId: 32, quantity: 3 });
+  });
+  act(() => {
+    result.current.clearBasket();
+  });
+  expect(result.current.basket).toEqual({});
+  expect(result.current.totalItemsInTheBasket()).toEqual(0);
+});

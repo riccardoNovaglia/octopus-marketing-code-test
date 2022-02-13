@@ -30,9 +30,14 @@ export function useBasket() {
       .reduce((acc, quantity) => acc + quantity, 0);
   }
 
+  function clearBasket() {
+    setCookie(cookieName, {});
+  }
+
   return {
     addToBasket,
     totalItemsInTheBasket,
+    clearBasket,
     basket: cookies.basket,
   };
 }
