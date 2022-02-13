@@ -87,7 +87,7 @@ yarn test
 Press `a` to run all the tests. This should give you two failures:
 
 ```bash
- FAIL  src/App.test.js
+ FAIL  src/App.test.jsx
   ✕ should be able to increase and decrease product quantity
   ✕ should be able to add items to the basket
 ```

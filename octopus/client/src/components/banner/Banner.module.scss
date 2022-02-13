@@ -1,0 +1,42 @@
+.banner {
+  background-color: var(--dark-blue-background);
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem;
+
+  .octoLogo,
+  .basketLogo {
+    height: 1.5rem;
+  }
+
+  .octoLogo {
+    width: auto;
+  }
+
+  .basketWrapper {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    padding-right: 0.4rem;
+  }
+
+  .basketWrapperFull {
+    @extend .basketWrapper;
+    padding-right: 0;
+  }
+
+  .basketAmount {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ff48d8;
+    color: black;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}

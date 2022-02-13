@@ -1,0 +1,116 @@
+.main {
+  & > * {
+    padding: 1rem 1.5rem;
+  }
+}
+
+.heroImageWrapper {
+  text-align: center;
+  background: linear-gradient(
+    to bottom,
+    var(--dark-blue-background) 90%,
+    var(--lighter-blue-background) 90%
+  );
+
+  .heroImage {
+    width: 75vw;
+    max-width: 600px;
+  }
+}
+
+.productName {
+  margin: 0;
+}
+
+.itemsQuantity {
+  color: var(--dark-blue-text);
+}
+
+.priceSection {
+  background-color: var(--dark-blue-background);
+  display: grid;
+  grid-template-areas:
+    "price quantity"
+    "addBtn addBtn";
+  justify-content: space-between;
+  align-items: center;
+  justify-items: stretch;
+  grid-gap: 1rem;
+
+  .price {
+    grid-area: price;
+    font-size: 3rem;
+    font-weight: bold;
+    .pence {
+      vertical-align: super;
+      font-size: 1.5rem;
+    }
+  }
+
+  .quantityControls {
+    grid-area: quantity;
+    display: grid;
+    grid-template-columns: repeat(3, 2.5rem);
+    grid-template-areas:
+      "label label label"
+      "plus amount minus";
+    justify-items: center;
+    align-items: center;
+
+    .quantityLabel {
+      grid-area: label;
+      color: var(--dark-blue-text);
+    }
+    .currentQuantity {
+      font-weight: bold;
+      font-size: 1.5rem;
+      justify-self: center;
+    }
+    .quantityButton {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      border-radius: 5px;
+      border: 0;
+      background-color: #36598d;
+      color: currentColor;
+      font-size: 1.5rem;
+      width: 2rem;
+      cursor: pointer;
+    }
+  }
+
+  .addToCart {
+    grid-area: addBtn;
+    border: 0;
+    border-radius: 4px;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 2rem;
+    padding: 10px;
+    background: linear-gradient(to bottom, #ff65ab 45%, #fb1a7b 55%);
+    max-width: 600px;
+    cursor: pointer;
+  }
+
+  .quantityError {
+    font-size: 0.8rem;
+    grid-column-end: span 3;
+  }
+}
+
+.specsSection {
+  background-color: var(--dark-blue-background);
+
+  .specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: stretch;
+
+    & > dd,
+    & > dt {
+      border-bottom: 1px solid var(--lighter-blue-background);
+      margin: 0;
+      padding: 0.5rem 0;
+    }
+  }
+}
