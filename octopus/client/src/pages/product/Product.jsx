@@ -51,12 +51,11 @@ function HeroImage({ imgUrl }) {
 function Title({ name, power, quantity }) {
   return (
     <section>
-      <h1 className={styles.productName}>{name}</h1>
+      <PageTitle className={styles.productName} title={name} />
       <p className={styles.subtitle}>
-        <span>{power}</span>
-        {/* TODO: add // with CSS rather than text so that it doesn't get read out? */}
-        {" // "}
-        <span>Packet of {quantity}</span>
+        {power}
+        <span aria-hidden>{" // "}</span>
+        Packet of {quantity}
       </p>
     </section>
   );
