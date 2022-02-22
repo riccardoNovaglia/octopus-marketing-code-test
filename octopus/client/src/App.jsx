@@ -2,7 +2,6 @@ import { Footer } from "./components/footer/Footer";
 import { Banner } from "./components/banner/Banner";
 import { Product } from "./pages/product/Product";
 
-import styles from "./App.module.scss";
 import { useBasket } from "./basket/useBasket";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Basket } from "./pages/basket/Basket";
@@ -13,7 +12,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Banner itemsInBasket={totalItemsInTheBasket()} />
-      <main className={styles.main}>
+      <main>
         <Routes>
           {/* TODO: really, / should be a list of products, but for now just renders the hardcoded existing product */}
           <Route

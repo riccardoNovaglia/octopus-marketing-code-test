@@ -22,7 +22,7 @@ export function Product({ addItemsToBasket }) {
   const specs = { brand, weight, height, width, length, modelCode, colour };
 
   return (
-    <>
+    <div className={styles.product}>
       <HeroImage imgUrl={product.imgUrl} />
       <Title
         name={product.name}
@@ -38,7 +38,7 @@ export function Product({ addItemsToBasket }) {
       </Price>
       <Description description={product.description} />
       <Specs {...specs} />
-    </>
+    </div>
   );
 }
 
@@ -57,7 +57,7 @@ function HeroImage({ imgUrl }) {
 
 function Title({ name, power, quantity }) {
   return (
-    <section>
+    <section className={styles.titleWrapper}>
       <PageTitle className={styles.productName} title={name} />
       <p className={styles.subtitle}>
         {power}
@@ -70,7 +70,7 @@ function Title({ name, power, quantity }) {
 
 function Description({ description }) {
   return (
-    <section>
+    <section className={styles.description}>
       <h2>Description</h2>
       <p>{description}</p>
     </section>
